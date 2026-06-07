@@ -65,9 +65,6 @@ pipeline {
         }
 
         stage('Docker Push') {
-            when {
-                branch 'main'
-            }
             steps {
                 echo "Pushing image to Docker Hub..."
                 sh """
@@ -79,9 +76,6 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                branch 'main'
-            }
             steps {
                 echo "Deploying application..."
                 sh """
