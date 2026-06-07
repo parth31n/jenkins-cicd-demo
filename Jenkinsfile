@@ -85,8 +85,8 @@ pipeline {
             steps {
                 echo "Deploying application..."
                 sh """
-                    docker compose down --remove-orphans || true
-                    docker compose up -d app
+                    docker compose pull app
+                    docker compose up -d --force-recreate app
                 """
             }
         }
