@@ -2,17 +2,28 @@ pipeline {
     agent any
 
     stages {
+
         stage('Build') {
             steps {
-                sh 'java -version'
-                sh 'mvn -version'
-                sh 'mvn clean package'
+                sh 'mvn clean compile'
             }
         }
-        stage('Docker Check') {
+
+        stage('Test') {
             steps {
-                sh 'docker --version'
-                sh 'docker compose version'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t hello-app .'
             }
         }
     }
