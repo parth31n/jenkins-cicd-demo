@@ -44,15 +44,7 @@ pipeline {
         stage('Code Coverage') {
             steps {
                 sh 'mvn jacoco:report'
-            }
-            post {
-                always {
-                    jacoco(
-                        execPattern: '**/target/jacoco.exec',
-                        classPattern: '**/target/classes',
-                        sourcePattern: '**/src/main/java'
-                    )
-                }
+                archiveArtifacts artifacts: 'target/site/jacoco/**', allowEmptyArchive: true
             }
         }
 
