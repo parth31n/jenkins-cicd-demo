@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME    = 'jenkins-cicd-demo'
-        IMAGE_NAME  = "parth/${APP_NAME}"
+        IMAGE_NAME  = "ppert/${APP_NAME}"
         IMAGE_TAG   = "${BUILD_NUMBER}"
         DOCKER_CRED = credentials('docker-hub-credentials')
     }
