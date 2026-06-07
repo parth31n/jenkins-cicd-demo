@@ -9,6 +9,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Docker Check') {
+            steps {
+                sh 'docker --version'
+                sh 'docker compose version'
+            }
+        }
     }
 }
 
